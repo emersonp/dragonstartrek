@@ -20,7 +20,7 @@ namespace dragonstartrek.Controllers
         {
             ViewData["Message"] = "Your application description page.";
             var dice = new Tools.Dice();
-            ViewData["Dice"] = dice.Roll(3,6);
+            ViewData["Dice"] = dice.Roll("d3+1");
 
             return View();
         }

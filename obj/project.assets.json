@@ -4746,6 +4746,16 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
+      },
+      "tools/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/tools.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/tools.dll": {}
+        }
       }
     }
   },
@@ -12524,12 +12534,18 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
+    },
+    "tools/1.0.0": {
+      "type": "project",
+      "path": "../tools/tools.csproj",
+      "msbuildProject": "../tools/tools.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.0",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "tools >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12559,7 +12575,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "c:\\Users\\parker00\\Dropbox\\Coding\\dotnet\\tools\\tools.csproj": {
+              "projectPath": "c:\\Users\\parker00\\Dropbox\\Coding\\dotnet\\tools\\tools.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

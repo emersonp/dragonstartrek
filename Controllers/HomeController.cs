@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dragonstartrek.Models;
+using tools;
 
 namespace dragonstartrek.Controllers
 {
@@ -18,6 +19,8 @@ namespace dragonstartrek.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+            var dice = new tools.Dice();
+            ViewData["Dice"] = dice.Roll(3,6);
 
             return View();
         }

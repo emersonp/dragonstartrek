@@ -8,3 +8,5 @@ c:\Users\parker00\Dropbox\Coding\dotnet\dragonstartrek\obj\Debug\netcoreapp2.0\d
 c:\Users\parker00\Dropbox\Coding\dotnet\dragonstartrek\obj\Debug\netcoreapp2.0\dragonstartrek.AssemblyInfo.cs
 c:\Users\parker00\Dropbox\Coding\dotnet\dragonstartrek\obj\Debug\netcoreapp2.0\dragonstartrek.dll
 c:\Users\parker00\Dropbox\Coding\dotnet\dragonstartrek\obj\Debug\netcoreapp2.0\dragonstartrek.pdb
+c:\Users\parker00\Dropbox\Coding\dotnet\dragonstartrek\bin\Debug\netcoreapp2.0\tools.dll
+c:\Users\parker00\Dropbox\Coding\dotnet\dragonstartrek\bin\Debug\netcoreapp2.0\tools.pdb

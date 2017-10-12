@@ -25,12 +25,13 @@ namespace dragonstartrek.Controllers
             ViewData["Dice"] = dice.Roll("d3+1");
 
             NPCGenerator generator = new NPCGenerator("Ein");
-            NPC temp1 = generator.Generate("random", "human");
-            NPC temp2 = generator.Generate("random", "human");
-            NPC temp3 = generator.Generate("random", "human");
-            NPC temp4 = generator.Generate("random", "human");
+            List<NPC> npcs = new List<NPC>();
+            for (var i = 0; i < 10; i++) {
+                NPC tempNPC = generator.Generate("Random", "Human");
+                npcs.Add(tempNPC);
+            }
 
-            return View();
+            return View(npcs);
         }
 
         public IActionResult Contact()

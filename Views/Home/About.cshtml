@@ -1,8 +1,28 @@
-﻿@{
+﻿@using dragonstartrek.Generators
+@model List<NPC>
+
+@{
     ViewData["Title"] = "About";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
-<h3>You rolled: @ViewData["Dice"]</h3>
+<table class="table">
+    <thead>
+        <th>Full Name</th>
+        <th>Species</th>
+        <th>Gender</th>
+        <th>Profession</th>
+        <th>Culture</th>
+    </thead>
+    <tbody>
 
-<p>Use this area to provide additional information.</p>
+    @foreach(var npc in Model) {
+        <tr>
+            <td>@npc.FullName()</td>
+            <td>@npc.Species</td>
+            <td>@npc.Gender</td>
+            <td>@npc.Profession</td>
+            <td>@npc.Culture</td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dragonstartrek.Models;
+using dragonstartrek.Constants;
+using dragonstartrek.Generators;
 using Tools;
 
 namespace dragonstartrek.Controllers
@@ -21,6 +23,12 @@ namespace dragonstartrek.Controllers
             ViewData["Message"] = "Your application description page.";
             var dice = new Tools.Dice();
             ViewData["Dice"] = dice.Roll("d3+1");
+
+            NPCGenerator generator = new NPCGenerator("Ein");
+            NPC temp1 = generator.Generate("random", "human");
+            NPC temp2 = generator.Generate("random", "human");
+            NPC temp3 = generator.Generate("random", "human");
+            NPC temp4 = generator.Generate("random", "human");
 
             return View();
         }

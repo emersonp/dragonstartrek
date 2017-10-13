@@ -1,4 +1,5 @@
 using dragonstartrek.Constants;
+using dragonstartrek.Models;
 using System;
 using System.Collections.Generic;
 using Tools;
@@ -20,27 +21,13 @@ namespace dragonstartrek.Generators {
                 GivenName = Chain.Generate(),
                 FamilyName = Chain.Generate(),
                 Culture = Culture,
-                Profession = NPCProfessions.BroadCategory[dice.Roll("1d" + NPCProfessions.BroadCategory.Count) - 1]
+                Profession = NPCProfessions.BroadCategory[dice.Roll("1d" + NPCProfessions.BroadCategory.Count) - 1],
+                MaritalStatus = dice.Roll("1d100") <= 56 ? "Married" : "Single"
             };
             newNPC.Gender = dice.Roll("1d200") == 200 ? (newNPC.Sex == "Male" ? "Female" : "Male") : newNPC.Sex;
 
             // Sex
             return newNPC;
-        }
-    }
-    public class NPC {
-        public string Culture { get; set; }
-        public string FamilyName { get; set; }
-        public string Gender { get; set; }
-        public string GivenName { get; set; }
-        public string Profession { get; set; }
-        public string Sex { get; set; }
-        public string Species { get; set; }
-        public string FullName() {
-            return GivenName + " " + FamilyName;
-        }
-
-        public NPC() {
         }
     }
 }

@@ -33,9 +33,22 @@ namespace dragonstartrek.Generators {
                     break;
             }
             newNPC.Gender = dice.Roll("1d200") == 200 ? (newNPC.Sex == "Male" ? "Female" : "Male") : newNPC.Sex;
+            newNPC.PhysicalDescription = GeneratePhysicalDescription(newNPC.Gender, 
+                    newNPC.Species, newNPC.Culture);
 
             // Sex
             return newNPC;
+        }
+        public NPCPhysicalDescription GeneratePhysicalDescription(string gender, string species, string culture) {
+            NPCPhysicalDescription description = new NPCPhysicalDescription();
+            string buildPhrase = dice.Sample(new List<string>() {
+                "They have a [build] build.",
+                "They are a [build] person."
+            });
+            description.Build = Madlib.ParseAndPopulate(buildPhrase, 
+                new Dictionary<string, List<string>>() { { "build", NPCPhysicalDescriptions.Builds } });
+
+            return description;
         }
     }
 }

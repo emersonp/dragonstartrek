@@ -6,24 +6,32 @@ using Tools;
 
 namespace dragonstartrek.Generators {
     public class NPCGenerator {
-        public MarkovChain Chain;
+        public Dictionary<string, MarkovChain> Chains;
         private Dice dice = new Dice();
-        public string Culture;
-        public NPCGenerator(string culture) {
-            Culture = culture;
-            Chain = new MarkovChain(2);
-            Chain.ConvertWords(LanguageEin.Names);
+        public NPCGenerator() {
+            Chains = new Dictionary<string, MarkovChain>();
+            foreach(Language language in Languages.List) {
+                Chains[language.Name] = new MarkovChain(2);
+                Chains[language.Name].ConvertWords(language.Names);
+            }
         }
-        public NPC Generate(string sex, string species) {
+        public NPC Generate() {
             NPC newNPC = new NPC() {
-                Sex = sex == "Random" ? (dice.Roll("1d2") == 1 ? "Male" : "Female") : sex,
-                Species = species,
-                GivenName = Chain.Generate(),
-                FamilyName = Chain.Generate(),
-                Culture = Culture,
+                Sex = dice.Roll("1d2") == 1 ? "Male" : "Female",
+                Species = dice.Sample(new List<string>() { "Summer Elf", "Vrar" }),
                 Profession = dice.Sample(NPCProfessions.BroadCategory),
                 MaritalStatus = dice.Roll("1d100") <= 56 ? "Married" : "Single"
             };
+            switch(newNPC.Species) {
+                case "Summer Elf":
+                    newNPC.GivenName = Chains["Ein"].Generate();
+                    newNPC.FamilyName = Chains["Ein"].Generate();
+                    break;
+                case "Vrar":
+                    newNPC.GivenName = Chains["Rozons"].Generate();
+                    newNPC.FamilyName = Chains["Rozons"].Generate();
+                    break;
+            }
             newNPC.Gender = dice.Roll("1d200") == 200 ? (newNPC.Sex == "Male" ? "Female" : "Male") : newNPC.Sex;
 
             // Sex

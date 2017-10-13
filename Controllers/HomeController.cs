@@ -20,14 +20,10 @@ namespace dragonstartrek.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-            var dice = new Tools.Dice();
-            ViewData["Dice"] = dice.Roll("d3+1");
-
-            NPCGenerator generator = new NPCGenerator("Ein");
+            NPCGenerator generator = new NPCGenerator();
             List<NPC> npcs = new List<NPC>();
-            for (var i = 0; i < 10; i++) {
-                NPC tempNPC = generator.Generate("Random", "Human");
+            for (var i = 0; i < 20; i++) {
+                NPC tempNPC = generator.Generate();
                 npcs.Add(tempNPC);
             }
 

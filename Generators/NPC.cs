@@ -21,7 +21,7 @@ namespace dragonstartrek.Generators {
                 GivenName = Chain.Generate(),
                 FamilyName = Chain.Generate(),
                 Culture = Culture,
-                Profession = NPCProfessions.BroadCategory[dice.Roll("1d" + NPCProfessions.BroadCategory.Count) - 1],
+                Profession = dice.Sample(NPCProfessions.BroadCategory),
                 MaritalStatus = dice.Roll("1d100") <= 56 ? "Married" : "Single"
             };
             newNPC.Gender = dice.Roll("1d200") == 200 ? (newNPC.Sex == "Male" ? "Female" : "Male") : newNPC.Sex;
